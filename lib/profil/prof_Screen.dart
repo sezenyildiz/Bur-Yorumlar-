@@ -1,13 +1,20 @@
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
+final _picker=ImagePicker();
 FirebaseFirestore firestore = FirebaseFirestore.instance;
 var burc,ad,saglik1,olumlu1,film1,stil1,baslik1,baslik2,baslik3,baslik4,baslik5,baslik6;
 String ask1="";
+var resimUrl;
+File imageFile;
 String kariyer1="";
+bool resim=false;
 class ProfilScreen extends StatefulWidget {
   const ProfilScreen({Key key}) : super(key: key);
 
@@ -77,6 +84,17 @@ class _ProfilScreenState extends State<ProfilScreen> {
     });
     print(film1);
   }
+  Future getGallery(BuildContext context)async{
+    final pickedFile=await _picker.getImage(source: ImageSource.gallery);
+    this.setState(() {
+      imageFile=File(pickedFile.path);
+      resim=true;
+    });
+    var ref=FirebaseStorage.instance.ref().child("users").child(FirebaseAuth.instance.currentUser.email).child("profil.png");
+    UploadTask uploadTask=ref.putFile(imageFile);
+    resimUrl=await ref.getDownloadURL();
+    print("URL ADRESİ: ${resimUrl}");
+  }
   @override
   Widget build(BuildContext context) {
     firestore.collection("users").doc(FirebaseAuth.instance.currentUser.email).get().then((docSnap){
@@ -87,13 +105,14 @@ class _ProfilScreenState extends State<ProfilScreen> {
     });
     return Scaffold(
       appBar:  AppBar(
-
         title: Text("Burç Yorumları"),
         centerTitle: true,
         actions: [
           IconButton(
-            icon: Icon(Icons.notifications_none),
-            onPressed: () {},
+            icon: Icon(Icons.add_a_photo),
+            onPressed: () {
+              getGallery(context);
+            },
           ),
         ],
         //backgroundColor: Colors.purple,
@@ -115,7 +134,8 @@ class _ProfilScreenState extends State<ProfilScreen> {
          Container(
            height: MediaQuery.of(context).size.height-450,
            decoration: BoxDecoration(
-             image: DecorationImage(image: AssetImage("resim/profil_back.png")),
+             image: DecorationImage(image:
+             imageFile==null?AssetImage(("resim/profil_back.png")):NetworkImage(resimUrl)),
              gradient: LinearGradient(
                  begin: Alignment.topCenter,
                  colors: [
