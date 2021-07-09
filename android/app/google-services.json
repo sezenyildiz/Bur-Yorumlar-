@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "748167165125",
+    "project_id": "burcapp-a8600",
+    "storage_bucket": "burcapp-a8600.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748167165125:android:f1b03bddd0609ea989acac",
+        "android_client_info": {
+          "package_name": "com.example.burc_yorum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748167165125-6t5hbvr7e96um933vbtotet8bmivom59.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.burc_yorum",
+            "certificate_hash": "837233b19c10dea3475e73657db29c5820864ca2"
+          }
+        },
+        {
+          "client_id": "748167165125-gnvo1mffgbp49gqd4hg46no701rtakda.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPNAptDG_GCp65S_nvQeU6T5rlDJPVxfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748167165125-gnvo1mffgbp49gqd4hg46no701rtakda.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
