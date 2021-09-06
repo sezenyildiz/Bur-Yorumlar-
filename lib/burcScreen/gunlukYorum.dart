@@ -65,7 +65,6 @@ class _gunlukYorumState extends State<gunlukYorum> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:  AppBar(
-
         title: Text(widget.gelenAd +" Burcu Yorumları"),
         centerTitle: true,
         actions: [
@@ -74,7 +73,6 @@ class _gunlukYorumState extends State<gunlukYorum> {
             onPressed: () {},
           ),
         ],
-        //backgroundColor: Colors.purple,
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(

@@ -16,8 +16,6 @@ File imageFile;
 String kariyer1="";
 bool resim=false;
 class ProfilScreen extends StatefulWidget {
-  const ProfilScreen({Key key}) : super(key: key);
-
   @override
   _ProfilScreenState createState() => _ProfilScreenState();
 }
